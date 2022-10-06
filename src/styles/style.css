@@ -1,0 +1,82 @@
+
+
+.hello {
+    color:red;
+}
+
+/* page layout index*/
+#page-grid {
+    display: grid;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    grid-template-rows: 5vh 90vh 5vh;
+    grid-template-columns: 30vw 70vw;
+}
+
+.grid-section {
+    border: 1px solid black;
+} 
+
+#header-section {
+    color:red;
+    grid-area: 1 / 1 / 2 / 3;
+}
+
+#list-section {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+#lists-container {}
+
+.all-lists {}
+
+#today-list {}
+
+.task-list-title {}
+
+.task-list {}
+
+.list-name {}
+
+.new-list
+
+.list-button {}
+
+
+#favorite-list {}
+
+#all-list-container {}
+
+
+#task-section {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.todo-list {}
+
+.todo-list-header {}
+
+.todo-list-title {}
+
+.todo-count {}
+
+.todo-list-body {}
+
+.todos {};
+
+.task {}
+
+#task-1 {}
+
+.new-task-creator {}
+
+.delete-task {}
+
+#footer-section {
+    grid-area: 3 / 1 / 4 / 3;
+}
