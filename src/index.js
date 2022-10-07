@@ -75,7 +75,7 @@ function listContent() {
 
   // list 1
   const firstList = document.createElement("li");
-  firstList.setAttribute("class", "list-name");
+  firstList.setAttribute("class", "list-name active-list");
   firstList.innerText = "First List";
 
   // list 2
@@ -131,7 +131,6 @@ function tasksContent() {
   // container & div for task section
   const taskContainer = document.getElementById("task-section");
   const taskContent = document.createElement("div");
-  taskContent.innerText = "Tasks";
 
   // div for current selected task
   const currentTaskList = document.createElement("div");
@@ -208,8 +207,14 @@ function tasksContent() {
   newTaskButton.innerText = "New Task";
 
   // delete task
-  const deleteTask = document.createElement("div");
-  deleteTask.setAttribute("class", "delete-task");
+  const deleteTasks = document.createElement("div");
+  deleteTasks.setAttribute("class", "delete-tasks");
+  const deleteCompletedBtn = document.createElement("button");
+  deleteCompletedBtn.setAttribute("class", "btn-delete");
+  deleteCompletedBtn.innerText = "Clear Completed Tasks";
+  const deleteTaskList = document.createElement("button");
+  deleteTaskList.setAttribute("class", "btn-delete");
+  deleteTaskList.innerText = "Delete List";
 
   // append main containers
   taskContainer.appendChild(taskContent);
@@ -243,7 +248,9 @@ function tasksContent() {
   newTask.appendChild(newTaskButton);
 
   // delete task
-  taskListBody.appendChild(deleteTask);
+  taskListBody.appendChild(deleteTasks);
+  deleteTasks.appendChild(deleteCompletedBtn);
+  deleteTasks.appendChild(deleteTaskList);
 
   return taskContainer;
 }
