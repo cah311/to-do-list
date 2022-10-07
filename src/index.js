@@ -53,47 +53,68 @@ headerContent();
 
 // appends content to list section
 function listContent() {
+  // main list container
   const listContainer = document.getElementById("list-section");
 
   const listContent = document.createElement("div");
   listContent.setAttribute("id", "lists-container");
 
+  // Full list library
   const allListContainer = document.createElement("div");
   allListContainer.setAttribute("class", "all-lists");
   allListContainer.setAttribute("id", "all-list-container");
 
+  // Header for list of lists
   const allListTitle = document.createElement("h2");
   allListTitle.setAttribute("class", "task-list-title");
   allListTitle.innerText = "Lists";
 
+  // list of lists
   const allList = document.createElement("ul");
   allList.setAttribute("class", "task-list");
 
+  // list 1
   const firstList = document.createElement("li");
   firstList.setAttribute("class", "list-name");
   firstList.innerText = "First List";
 
+  // list 2
+  const secondList = document.createElement("li");
+  secondList.setAttribute("class", "list-name");
+  secondList.innerText = "Second List";
+
+  // list 3
+  const thirdList = document.createElement("li");
+  thirdList.setAttribute("class", "list-name");
+  thirdList.innerText = "Second List";
+
+  // add new list
   const newList = document.createElement("form");
   newList.setAttribute("action", "");
   const newListInput = document.createElement("input");
   newListInput.setAttribute("type", "text");
   newListInput.setAttribute("class", "new-list");
   newListInput.setAttribute("placeholder", "new-list-name");
-
+  //// subit new list
   const newListButton = document.createElement("button");
   newListButton.setAttribute("class", "list-button");
   newListButton.innerText = "New List";
 
+  //// ***********temp*****************/////
   const btn = document.createElement("button");
   btn.innerHTML = "Click me and check the console!";
   btn.onclick = lists;
+  //// ***********temp*****************/////
 
+  // append to list section
   listContainer.appendChild(listContent);
-
   listContent.appendChild(allListContainer);
+  // full list library
   allListContainer.appendChild(allListTitle);
   allListContainer.appendChild(allList);
-  allListContainer.appendChild(firstList);
+  allList.appendChild(firstList);
+  allList.appendChild(secondList);
+  allList.appendChild(thirdList);
   allListContainer.appendChild(newList);
   newList.appendChild(newListInput);
   newList.appendChild(newListButton);
@@ -107,13 +128,16 @@ listContent();
 
 // appends content to task section
 function tasksContent() {
+  // container & div for task section
   const taskContainer = document.getElementById("task-section");
   const taskContent = document.createElement("div");
   taskContent.innerText = "Tasks";
 
+  // div for current selected task
   const currentTaskList = document.createElement("div");
   currentTaskList.setAttribute("class", "todo-list");
 
+  // task list header
   const taskListHeader = document.createElement("div");
   taskListHeader.setAttribute("class", "todo-list-header");
 
@@ -124,11 +148,15 @@ function tasksContent() {
   taskCount.setAttribute("class", "todo-count");
   taskCount.innerText = "3 tasks remaining";
 
+  //task list body
   const taskListBody = document.createElement("div");
   taskListBody.setAttribute("class", "todo-list-body");
 
+  // todo section
   const todos = document.createElement("div");
   todos.setAttribute("class", "todos");
+
+  // individual task1
   const task1 = document.createElement("div");
   task1.setAttribute("class", "task");
   const task1Input = document.createElement("input");
@@ -137,28 +165,84 @@ function tasksContent() {
   const task1Label = document.createElement("label");
   task1Label.setAttribute("for", "task-1");
   task1Label.innerText = "Banana";
-  const customCheckbox = document.createElement("span");
-  customCheckbox.setAttribute("class", "custom-checkbox");
+  const customCheckbox1 = document.createElement("span");
+  customCheckbox1.setAttribute("class", "custom-checkbox");
 
+  // individual task2
+  const task2 = document.createElement("div");
+  task2.setAttribute("class", "task");
+  const task2Input = document.createElement("input");
+  task2Input.setAttribute("type", "checkbox");
+  task2Input.setAttribute("id", "task-2");
+  const task2Label = document.createElement("label");
+  task2Label.setAttribute("for", "task-2");
+  task2Label.innerText = "Apple";
+  const customCheckbox2 = document.createElement("span");
+  customCheckbox2.setAttribute("class", "custom-checkbox");
+
+  // individual task3
+  const task3 = document.createElement("div");
+  task3.setAttribute("class", "task");
+  const task3Input = document.createElement("input");
+  task3Input.setAttribute("type", "checkbox");
+  task3Input.setAttribute("id", "task-3");
+  const task3Label = document.createElement("label");
+  task3Label.setAttribute("for", "task-3");
+  task3Label.innerText = "Orange";
+  const customCheckbox3 = document.createElement("span");
+  customCheckbox3.setAttribute("class", "custom-checkbox");
+
+  // task creator
   const taskCreator = document.createElement("div");
   taskCreator.setAttribute("class", "new-task-creator");
+  //// new task form
+  const newTask = document.createElement("form");
+  newTask.setAttribute("action", "");
+  const newTaskInput = document.createElement("input");
+  newTaskInput.setAttribute("type", "text");
+  newTaskInput.setAttribute("class", "new-task");
+  newTaskInput.setAttribute("placeholder", "new-task-name");
+  //// subit new list
+  const newTaskButton = document.createElement("button");
+  newTaskButton.setAttribute("class", "task-button");
+  newTaskButton.innerText = "New Task";
 
+  // delete task
   const deleteTask = document.createElement("div");
   deleteTask.setAttribute("class", "delete-task");
 
+  // append main containers
   taskContainer.appendChild(taskContent);
-
   taskContent.appendChild(currentTaskList);
+  // append header content
   currentTaskList.appendChild(taskListHeader);
   taskListHeader.appendChild(taskListTitle);
   taskListHeader.appendChild(taskCount);
+  // append body content
   currentTaskList.appendChild(taskListBody);
   taskListBody.appendChild(todos);
+  //// task1
   todos.appendChild(task1);
   task1.appendChild(task1Input);
   task1.appendChild(task1Label);
-  task1Label.appendChild(customCheckbox);
+  task1Label.appendChild(customCheckbox1);
+  ////task2
+  todos.appendChild(task2);
+  task2.appendChild(task2Input);
+  task2.appendChild(task2Label);
+  task2Label.appendChild(customCheckbox2);
+  ////task3
+  todos.appendChild(task3);
+  task3.appendChild(task3Input);
+  task3.appendChild(task3Label);
+  task3Label.appendChild(customCheckbox3);
+  // task creator
   taskListBody.appendChild(taskCreator);
+  taskCreator.appendChild(newTask);
+  newTask.appendChild(newTaskInput);
+  newTask.appendChild(newTaskButton);
+
+  // delete task
   taskListBody.appendChild(deleteTask);
 
   return taskContainer;
