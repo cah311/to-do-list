@@ -94,11 +94,11 @@ function listContent() {
   const newListInput = document.createElement("input");
   newListInput.setAttribute("type", "text");
   newListInput.setAttribute("class", "new-list");
-  newListInput.setAttribute("placeholder", "new-list-name");
+  newListInput.setAttribute("placeholder", "new list name");
   //// subit new list
   const newListButton = document.createElement("button");
-  newListButton.setAttribute("class", "list-button");
-  newListButton.innerText = "New List";
+  newListButton.setAttribute("class", "list-button button-create");
+  newListButton.innerText = "+";
 
   //// ***********temp*****************/////
   const btn = document.createElement("button");
@@ -201,10 +201,10 @@ function tasksContent() {
   newTaskInput.setAttribute("type", "text");
   newTaskInput.setAttribute("class", "new-task");
   newTaskInput.setAttribute("placeholder", "new-task-name");
-  //// subit new list
+  //// submit new task
   const newTaskButton = document.createElement("button");
-  newTaskButton.setAttribute("class", "task-button");
-  newTaskButton.innerText = "New Task";
+  newTaskButton.setAttribute("class", "task-button button-create");
+  newTaskButton.innerText = "+";
 
   // delete task
   const deleteTasks = document.createElement("div");
