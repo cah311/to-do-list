@@ -1,6 +1,8 @@
 import _ from "lodash";
 import "./styles/style.css";
-import lists from "./lists.js";
+import logo from "./styles/checklist.png";
+import render from "./lists.js";
+import { newList } from "./lists";
 
 // Creates grid for layout of page
 function pageGrid() {
@@ -43,8 +45,17 @@ document.body.append(pageGrid());
 function headerContent() {
   const headerContainer = document.getElementById("header-section");
   const headerContent = document.createElement("div");
-  headerContent.innerText = "Header";
+  headerContent.setAttribute("id", "header-content");
+  const logoContainer = document.createElement("div");
+  logoContainer.setAttribute("id", "header-logo-container");
+
+  const Logo = new Image();
+  Logo.src = logo;
+  Logo.setAttribute("id", "header-logo");
+
   headerContainer.appendChild(headerContent);
+  headerContent.appendChild(logoContainer);
+  logoContainer.appendChild(Logo);
 
   return headerContainer;
 }
@@ -72,39 +83,36 @@ function listContent() {
   // list of lists
   const allList = document.createElement("ul");
   allList.setAttribute("class", "task-list");
+  allList.setAttribute("data-lists", "");
 
   // list 1
-  const firstList = document.createElement("li");
-  firstList.setAttribute("class", "list-name active-list");
-  firstList.innerText = "First List";
+  //   const firstList = document.createElement("li");
+  //   firstList.setAttribute("class", "list-name active-list");
+  //   firstList.innerText = "First List";
 
-  // list 2
-  const secondList = document.createElement("li");
-  secondList.setAttribute("class", "list-name");
-  secondList.innerText = "Second List";
+  //   // list 2
+  //   const secondList = document.createElement("li");
+  //   secondList.setAttribute("class", "list-name");
+  //   secondList.innerText = "Second List";
 
-  // list 3
-  const thirdList = document.createElement("li");
-  thirdList.setAttribute("class", "list-name");
-  thirdList.innerText = "Second List";
+  //   // list 3
+  //   const thirdList = document.createElement("li");
+  //   thirdList.setAttribute("class", "list-name");
+  //   thirdList.innerText = "Second List";
 
   // add new list
   const newList = document.createElement("form");
   newList.setAttribute("action", "");
+  newList.setAttribute("data-new-list-form", "");
   const newListInput = document.createElement("input");
   newListInput.setAttribute("type", "text");
   newListInput.setAttribute("class", "new-list");
-  newListInput.setAttribute("placeholder", "new list name");
-  //// subit new list
+  newListInput.setAttribute("data-new-list-input", "");
+  newListInput.setAttribute("placeholder", "new list");
+  //// submit new list
   const newListButton = document.createElement("button");
   newListButton.setAttribute("class", "list-button button-create");
   newListButton.innerText = "+";
-
-  //// ***********temp*****************/////
-  const btn = document.createElement("button");
-  btn.innerHTML = "Click me and check the console!";
-  btn.onclick = lists;
-  //// ***********temp*****************/////
 
   // append to list section
   listContainer.appendChild(listContent);
@@ -112,14 +120,12 @@ function listContent() {
   // full list library
   allListContainer.appendChild(allListTitle);
   allListContainer.appendChild(allList);
-  allList.appendChild(firstList);
-  allList.appendChild(secondList);
-  allList.appendChild(thirdList);
+  //   allList.appendChild(firstList);
+  //   allList.appendChild(secondList);
+  //   allList.appendChild(thirdList);
   allListContainer.appendChild(newList);
   newList.appendChild(newListInput);
   newList.appendChild(newListButton);
-
-  listContent.appendChild(btn);
 
   return listContainer;
 }
@@ -200,7 +206,7 @@ function tasksContent() {
   const newTaskInput = document.createElement("input");
   newTaskInput.setAttribute("type", "text");
   newTaskInput.setAttribute("class", "new-task");
-  newTaskInput.setAttribute("placeholder", "new-task-name");
+  newTaskInput.setAttribute("placeholder", "new task");
   //// submit new task
   const newTaskButton = document.createElement("button");
   newTaskButton.setAttribute("class", "task-button button-create");
@@ -261,10 +267,13 @@ tasksContent();
 function footerContent() {
   const footerContainer = document.getElementById("footer-section");
   const footerContent = document.createElement("div");
-  footerContent.innerText = "Footer";
+  //   footerContent.innerText = "Footer";
   footerContainer.appendChild(footerContent);
 
   return footerContainer;
 }
 
 footerContent();
+
+render();
+newList();
