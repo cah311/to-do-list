@@ -1,20 +1,32 @@
+import listDisplay from "./tasks";
+
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_KEY = "task.selectedListId";
 
-let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
-let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_KEY);
+export let lists =
+  JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
+export let selectedListId = localStorage.getItem(
+  LOCAL_STORAGE_SELECTED_LIST_KEY
+);
 
-function save() {
+export function save() {
   localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
+  localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_KEY, selectedListId);
 }
 
-function saveAndRender() {
+export function saveAndRender() {
   save();
   render();
 }
 
 export default function render() {
   const listContainer = document.querySelector("[data-lists]");
+  listContainer.addEventListener("click", (e) => {
+    if (e.target.tagName.toLowerCase() === "li") {
+      selectedListId = e.target.dataset.listId;
+      saveAndRender();
+    }
+  });
 
   clearElement(listContainer);
   lists.forEach((list) => {
@@ -27,9 +39,13 @@ export default function render() {
     }
     listContainer.append(listElement);
   });
+
+  listDisplay();
 }
 
-function clearElement(element) {
+function renderLists() {}
+
+export function clearElement(element) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
@@ -52,5 +68,27 @@ export function newList() {
 }
 
 function createList(name) {
-  return { id: Date.now().toString(), name: name, tasks: [] };
+  return {
+    id: Date.now().toString(),
+    name: name,
+    tasks: [
+      {
+        id: Date.now().toString(),
+        name: name,
+        complete: false,
+      },
+    ],
+  };
+}
+
+export function deleteList() {
+  const deleteListButton = document.querySelector("[data-delete-list-button]");
+
+  deleteListButton.addEventListener("click", (e) => {
+    lists = lists.filter((list) => list.id !== selectedListId);
+
+    selectedListId = null;
+    saveAndRender();
+  });
+  return deleteListButton;
 }

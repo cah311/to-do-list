@@ -2,7 +2,8 @@ import _ from "lodash";
 import "./styles/style.css";
 import logo from "./styles/checklist.png";
 import render from "./lists.js";
-import { newList } from "./lists";
+import { newList, deleteList } from "./lists";
+import listDisplay from "./tasks";
 
 // Creates grid for layout of page
 function pageGrid() {
@@ -85,21 +86,6 @@ function listContent() {
   allList.setAttribute("class", "task-list");
   allList.setAttribute("data-lists", "");
 
-  // list 1
-  //   const firstList = document.createElement("li");
-  //   firstList.setAttribute("class", "list-name active-list");
-  //   firstList.innerText = "First List";
-
-  //   // list 2
-  //   const secondList = document.createElement("li");
-  //   secondList.setAttribute("class", "list-name");
-  //   secondList.innerText = "Second List";
-
-  //   // list 3
-  //   const thirdList = document.createElement("li");
-  //   thirdList.setAttribute("class", "list-name");
-  //   thirdList.innerText = "Second List";
-
   // add new list
   const newList = document.createElement("form");
   newList.setAttribute("action", "");
@@ -141,6 +127,7 @@ function tasksContent() {
   // div for current selected task
   const currentTaskList = document.createElement("div");
   currentTaskList.setAttribute("class", "todo-list");
+  currentTaskList.setAttribute("data-list-display-container", "");
 
   // task list header
   const taskListHeader = document.createElement("div");
@@ -148,9 +135,11 @@ function tasksContent() {
 
   const taskListTitle = document.createElement("h2");
   taskListTitle.setAttribute("class", "todo-list-title");
+  taskListTitle.setAttribute("data-list-title", "");
   taskListTitle.innerHTML = "First List";
   const taskCount = document.createElement("p");
   taskCount.setAttribute("class", "todo-count");
+  taskCount.setAttribute("data-list-count", "");
   taskCount.innerText = "3 tasks remaining";
 
   //task list body
@@ -160,6 +149,7 @@ function tasksContent() {
   // todo section
   const todos = document.createElement("div");
   todos.setAttribute("class", "todos");
+  todos.setAttribute("data-tasks", "");
 
   // individual task1
   const task1 = document.createElement("div");
@@ -203,9 +193,13 @@ function tasksContent() {
   //// new task form
   const newTask = document.createElement("form");
   newTask.setAttribute("action", "");
+  newTask.setAttribute("data-new-task-form", "");
+
   const newTaskInput = document.createElement("input");
   newTaskInput.setAttribute("type", "text");
   newTaskInput.setAttribute("class", "new-task");
+  newTaskInput.setAttribute("data-new-task-input", "");
+
   newTaskInput.setAttribute("placeholder", "new task");
   //// submit new task
   const newTaskButton = document.createElement("button");
@@ -220,6 +214,7 @@ function tasksContent() {
   deleteCompletedBtn.innerText = "Clear Completed Tasks";
   const deleteTaskList = document.createElement("button");
   deleteTaskList.setAttribute("class", "btn-delete");
+  deleteTaskList.setAttribute("data-delete-list-button", "");
   deleteTaskList.innerText = "Delete List";
 
   // append main containers
@@ -277,3 +272,5 @@ footerContent();
 
 render();
 newList();
+deleteList();
+// listDisplay();
