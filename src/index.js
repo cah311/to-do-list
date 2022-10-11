@@ -3,7 +3,6 @@ import "./styles/style.css";
 import logo from "./styles/checklist.png";
 import render from "./lists.js";
 import { newList, deleteList } from "./lists";
-import listDisplay from "./tasks";
 
 // Creates grid for layout of page
 function pageGrid() {
@@ -106,9 +105,6 @@ function listContent() {
   // full list library
   allListContainer.appendChild(allListTitle);
   allListContainer.appendChild(allList);
-  //   allList.appendChild(firstList);
-  //   allList.appendChild(secondList);
-  //   allList.appendChild(thirdList);
   allListContainer.appendChild(newList);
   newList.appendChild(newListInput);
   newList.appendChild(newListButton);
@@ -211,6 +207,7 @@ function tasksContent() {
   deleteTasks.setAttribute("class", "delete-tasks");
   const deleteCompletedBtn = document.createElement("button");
   deleteCompletedBtn.setAttribute("class", "btn-delete");
+  deleteCompletedBtn.setAttribute("data-clear-complete-tasks-button", "");
   deleteCompletedBtn.innerText = "Clear Completed Tasks";
   const deleteTaskList = document.createElement("button");
   deleteTaskList.setAttribute("class", "btn-delete");

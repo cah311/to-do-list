@@ -163,6 +163,7 @@ form {
     justify-content: flex-start;
     align-items: center;
     padding-top: 3rem;
+    overflow: auto;
 }
 
 .todo-list {

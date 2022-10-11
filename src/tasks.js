@@ -26,6 +26,7 @@ export default function listDisplay() {
   clearElement(taskContainer);
   renderTasks(selectedList);
   addToTaskList();
+  clearCompletet();
 
   taskContainer.addEventListener("click", (e) => {
     if (e.target.tagName.toLowerCase() === "input") {
@@ -96,20 +97,6 @@ function renderTasks(selectedList) {
   });
 }
 
-// function updateTasks(lists) {
-//   const taskContainer = document.querySelector("[data-tasks]");
-//   taskContainer.addEventListener("click", (e) => {
-//     if (e.target.tagName.toLowerCase() === "input") {
-//       const selectedList = lists.find((list) => list.id !== selectedListId);
-//       const selectedTask = selectedList.tasks.find(
-//         (task) => task.id === e.target.id
-//       );
-//       console.log(selectedList);
-//       selectedTask.complete = e.target.checked;
-//     }
-//   });
-// }
-
 export function renderTaskCount(selectedList) {
   const listCountElement = document.querySelector("[data-list-count]");
 
@@ -118,4 +105,16 @@ export function renderTaskCount(selectedList) {
   ).length;
   const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
   listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
+}
+
+export function clearCompletet(selectedList) {
+  const clearCompleteTasksButton = document.querySelector(
+    "[data-clear-complete-tasks-button]"
+  );
+
+  clearCompleteTasksButton.addEventListener("click", (e) => {
+    selectedList = lists.find((list) => list.id === selectedListId);
+    selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
+    saveAndRender();
+  });
 }
